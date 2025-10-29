@@ -5,6 +5,7 @@ import { Text } from 'src/ui/text';
 import { Select } from 'src/ui/select';
 import { RadioGroup } from 'src/ui/radio-group';
 import { Separator } from 'src/ui/separator';
+import clsx from 'clsx';
 
 import styles from './ArticleParamsForm.module.scss';
 
@@ -64,9 +65,7 @@ export const ArticleParamsForm = ({ articleState, onApply }: Props) => {
 		<div ref={rootRef}>
 			<ArrowButton isOpen={isOpen} onClick={() => setIsOpen((s) => !s)} />
 			<aside
-				className={`${styles.container} ${
-					isOpen ? styles.container_open : ''
-				}`}>
+				className={clsx(styles.container, isOpen && styles.container_open)}>
 				<form className={styles.form} onSubmit={(e) => handleApply(e)}>
 					<Text uppercase={true} weight={800} size={31}>
 						Задайте параметры
